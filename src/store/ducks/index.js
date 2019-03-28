@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
-const example = (state = []) => state;
+import { reducer as search } from './search';
+import { reducer as cityForecast } from './city-forecast';
 
 export default combineReducers({
-  example,
+  search,
+  cityForecast,
 });
