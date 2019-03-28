@@ -1,7 +1,12 @@
 import apisauce from 'apisauce';
 
 const api = apisauce.create({
-  baseURL: 'http://10.0.0.108:3000/',
+  baseURL: 'http://api.openweathermap.org/data/2.5/',
+  params: {
+    appid: 'ccb2259295ec5499c4c4626544e8dcfe',
+    units: 'metric',
+    lang: 'pt_br',
+  },
 });
 
 export default api;
