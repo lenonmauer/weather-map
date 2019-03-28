@@ -1,22 +1,16 @@
 const debounce = (func, waitTime) => {
   let timeout;
 
-  return (...arg) => {
-    const context = this,
-
-    const later = () => {
+  return (...args) => {
+    const callLater = () => {
       timeout = null;
-      func.apply(context, args);
+      func(...args);
     };
-
-    const callNow = !timeout;
 
     clearTimeout(timeout);
 
-    timeout = setTimeout(later, waitTime);
-
-    if (callNow) func.apply(context, args);
+    timeout = setTimeout(callLater, waitTime);
   };
-}
+};
 
-export { debounce };
+export default debounce;
