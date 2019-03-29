@@ -7,7 +7,7 @@ export default {
   darker: '#333',
   black: '#000',
 
-  primary: '#37A7C2',
+  primary: '#27a9d9',
 
   transparent: 'transparent',
   darkTransparent: 'rgba(0, 0, 0, 0.6)',
