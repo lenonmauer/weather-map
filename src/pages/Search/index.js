@@ -41,8 +41,6 @@ class Search extends Component {
     const { getSearchRequest } = this.props;
 
     this.searchDelay = debounce(getSearchRequest, 800);
-
-    this.searchDelay('tramandai');
   }
 
   render() {
