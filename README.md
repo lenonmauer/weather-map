@@ -39,6 +39,11 @@ Observações: É necessário ter o ambiente Xcode ou Android Studio pré-config
   <li>reduxsauce: Para auxiliar na criação de Actions e Types do redux.</li>
 </ul>
 
+<h3>Tempo Gasto</h3>
+<ul>
+  <li>12h (Aproximadamente).</li>
+</ul>
+
 <h3>Dificuldades encontradas</h3>
 <ul>
   <li>Não foi possível testar o app em um iPhone, pois não possuo o software necessário para esta ação.</li>
