@@ -2,7 +2,7 @@ import { createActions, createReducer } from 'reduxsauce';
 
 const INITIAL_STATE = {
   data: [],
-  currentForecast: {},
+  currentForecast: [],
   loading: false,
   error: null,
 };
