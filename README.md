@@ -23,7 +23,9 @@ Observações: É necessário ter o ambiente Xcode ou Android Studio pré-config
   <li>Na tela de previsão do tempo, clique/toque no dia da semana que você deseja saber a previsão.</li>
   <li>A caixa central onde ficam temperaturas pode ser arrastada horizontalmente.</li>
 </ol>
-  
+
+<img src="./assets/presentation.gif" >
+
 <h3>Bibliotecas utilizadas</h3>
 <ul>
   <li>apisauce: Para fazer requisições para a api.</li>
@@ -34,9 +36,8 @@ Observações: É necessário ter o ambiente Xcode ou Android Studio pré-config
   <li>redux e react-redux e redux-saga: Para centralizar o estado da aplicação.</li>
   <li>reactotron: Para auxiliar no debug da aplicação.</li>
   <li>eslint: Manter a padronização do código.</li>
-  <li>reduxsauce: Para auxiliar na criação de Actions e Types do redux.</li>  
+  <li>reduxsauce: Para auxiliar na criação de Actions e Types do redux.</li>
 </ul>
-
 
 <h3>Dificuldades encontradas</h3>
 <ul>
