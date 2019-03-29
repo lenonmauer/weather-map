@@ -18,8 +18,8 @@ if (__DEV__) {
     reducers,
     compose(
       applyMiddleware(...middlewares),
-      console.tron.createEnhancer()
-    )
+      console.tron.createEnhancer(),
+    ),
   );
 } else {
   store = createStore(reducers, compose(applyMiddleware(...middlewares)));
