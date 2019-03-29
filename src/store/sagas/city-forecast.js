@@ -26,9 +26,9 @@ export function* getForecast(action) {
 
     return {
       dayOfWeek: date.format('dddd'),
-      time: date.format('HH'),
+      time: date.format('HH:mm'),
       city: response.data.city.name,
-      weatherIcon: item.weather[0].icon,
+      weatherIcon: item.weather[0].icon.slice(0, -1),
       weatherDescription: item.weather[0].description,
       date: date.format('DD-MM-YYYY'),
       temp: parseInt(item.main.temp, 10),
@@ -49,7 +49,7 @@ export function* getForecast(action) {
     }, {}),
   );
 
-  const current = forecastsPerDay[1];
+  const current = forecastsPerDay[0];
 
   return yield put(CityForecastActions.getForecastSuccess(forecastsPerDay, current));
 }
