@@ -10,6 +10,8 @@ import CityList from '~/pages/Search/components/CityList';
 
 import { SearchActions } from '~/store/ducks/search';
 
+import { searchResultMapper } from './data-mapper';
+
 import styles from './styles';
 import { colors } from '~/styles';
 
@@ -72,22 +74,8 @@ class Search extends Component {
   }
 }
 
-const formatSearchResult = (data) => {
-  if (data.list) {
-    return data.list.map(city => ({
-      id: city.id,
-      key: String(city.id),
-      name: city.name,
-      country: city.sys.country.toUpperCase(),
-      temperature: parseInt(city.main.temp, 10),
-    }));
-  }
-
-  return [];
-};
-
 const mapStateToProps = state => ({
-  searchResult: formatSearchResult(state.search.data),
+  searchResult: searchResultMapper(state.search.data),
   searchLoading: state.search.loading,
 });
 

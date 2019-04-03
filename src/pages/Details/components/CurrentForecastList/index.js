@@ -7,26 +7,24 @@ import CurrentForecastItem from '~/pages/Details/components/CurrentForecastItem'
 
 import styles from './styles';
 
-const CurrentForecast = ({ data }) => (
+const CurrentForecastList = ({ data }) => (
   <View style={styles.container}>
     <FlatList
       data={data}
       horizontal
       showsHorizontalScrollIndicator={false}
       keyExtractor={item => item.time}
-      renderItem={({ item }) => <CurrentForecastItem data={item} />}
+      renderItem={({ item }) => <CurrentForecastItem {...item} />}
     />
   </View>
 );
 
-CurrentForecast.propTypes = {
+CurrentForecastList.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      time: PropTypes.string.isRequired,
-      weatherIcon: PropTypes.string.isRequired,
-      temp: PropTypes.number.isRequired,
+      dayOfWeek: PropTypes.string,
     }),
   ).isRequired,
 };
 
-export default CurrentForecast;
+export default CurrentForecastList;

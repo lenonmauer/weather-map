@@ -21,35 +21,5 @@ export function* getForecast(action) {
 
   const response = yield call(api.get, `/forecast?id=${action.city_id}`);
 
-  const forecasts = response.data.list.map((item) => {
-    const date = moment(item.dt * 1000);
-
-    return {
-      dayOfWeek: date.format('dddd'),
-      time: date.format('HH:mm'),
-      city: response.data.city.name,
-      weatherIcon: item.weather[0].icon.slice(0, -1),
-      weatherDescription: item.weather[0].description,
-      date: date.format('DD-MM-YYYY'),
-      temp: parseInt(item.main.temp, 10),
-    };
-  });
-
-  const forecastsPerDay = Object.values(
-    forecasts.reduce((result, item) => {
-      if (!result[item.date]) {
-        return {
-          ...result,
-          [item.date]: [item],
-        };
-      }
-
-      result[item.date].push(item);
-      return result;
-    }, {}),
-  );
-
-  const current = forecastsPerDay[0];
-
-  return yield put(CityForecastActions.getForecastSuccess(forecastsPerDay, current));
+  return yield put(CityForecastActions.getForecastSuccess(response.data));
 }

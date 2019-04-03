@@ -8,17 +8,22 @@ import styles from './styles';
 const Summary = ({ data }) => (
   <View style={styles.container}>
     <Text style={styles.city}>{data.city}</Text>
-    <Text style={styles.temp}>{`${data.temp}°C`}</Text>
-    <Text style={styles.weather}>{data.weatherDescription}</Text>
+    <Text style={styles.temp}>{`${data.schedules[0].temp}°C`}</Text>
+    <Text style={styles.weather}>{data.schedules[0].weatherDescription}</Text>
     <Text style={styles.dayOfWeek}>{data.dayOfWeek}</Text>
   </View>
 );
 
 Summary.propTypes = {
   data: PropTypes.shape({
-    time: PropTypes.string.isRequired,
-    weatherIcon: PropTypes.string.isRequired,
-    temp: PropTypes.number.isRequired,
+    city: PropTypes.string.isRequired,
+    dayOfWeek: PropTypes.string.isRequired,
+    schedules: PropTypes.arrayOf(
+      PropTypes.shape({
+        weatherDescription: PropTypes.string.isRequired,
+        temp: PropTypes.number.isRequired,
+      }),
+    ),
   }).isRequired,
 };
 

@@ -1,8 +1,8 @@
 import { createActions, createReducer } from 'reduxsauce';
 
 const INITIAL_STATE = {
-  data: [],
-  currentForecast: [],
+  data: null,
+  currentDayIndex: 0,
   loading: false,
   error: null,
 };
@@ -11,7 +11,7 @@ const { Types, Creators } = createActions({
   getForecastRequest: ['city_id'],
   getForecastSuccess: ['data', 'current'],
   getForecastFailure: ['error'],
-  setCurrentForecast: ['data'],
+  setCurrentDayIndex: ['index'],
 });
 
 const request = (state = INITIAL_STATE) => ({
@@ -22,7 +22,7 @@ const request = (state = INITIAL_STATE) => ({
 const success = (state = INITIAL_STATE, action) => ({
   ...state,
   data: action.data,
-  currentForecast: action.current,
+  setCurrentDayIndex: 0,
   error: null,
   loading: false,
 });
@@ -33,16 +33,16 @@ const failure = (state = INITIAL_STATE, action) => ({
   error: action.error,
 });
 
-const setCurrentForecast = (state = INITIAL_STATE, action) => ({
+const setCurrentDayIndex = (state = INITIAL_STATE, action) => ({
   ...state,
-  currentForecast: action.data,
+  currentDayIndex: action.index,
 });
 
 export const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_FORECAST_REQUEST]: request,
   [Types.GET_FORECAST_SUCCESS]: success,
   [Types.GET_FORECAST_FAILURE]: failure,
-  [Types.SET_CURRENT_FORECAST]: setCurrentForecast,
+  [Types.SET_CURRENT_DAY_INDEX]: setCurrentDayIndex,
 });
 
 export const CityForecastTypes = Types;

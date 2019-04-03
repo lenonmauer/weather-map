@@ -8,31 +8,27 @@ import {
 import { weatherIcons } from '~/config/utils';
 import styles from './styles';
 
-const WeekForecastItem = ({ data, onItemSelected }) => {
-  const forecast = data[0];
-
-  return (
-    <TouchableOpacity onPress={() => onItemSelected(data)}>
-      <View style={styles.container}>
-        <Text style={styles.dayOfWeek}>{forecast.dayOfWeek}</Text>
-        <View style={styles.wrapper}>
-          <Text style={styles.temp}>{`${forecast.temp}°C`}</Text>
-          <Image style={styles.icon} source={weatherIcons[forecast.weatherIcon]} />
-        </View>
+const WeekForecastItem = ({ dayOfWeek, schedules, onItemSelected }) => (
+  <TouchableOpacity onPress={onItemSelected}>
+    <View style={styles.container}>
+      <Text style={styles.dayOfWeek}>{dayOfWeek}</Text>
+      <View style={styles.wrapper}>
+        <Text style={styles.temp}>{`${schedules[0].temp}°C`}</Text>
+        <Image style={styles.icon} source={weatherIcons[schedules[0].weatherIcon]} />
       </View>
-    </TouchableOpacity>
-  );
-};
+    </View>
+  </TouchableOpacity>
+);
 
 WeekForecastItem.propTypes = {
-  data: PropTypes.arrayOf(
+  dayOfWeek: PropTypes.string.isRequired,
+  onItemSelected: PropTypes.func.isRequired,
+  schedules: PropTypes.arrayOf(
     PropTypes.shape({
-      dayOfWeek: PropTypes.string,
       temp: PropTypes.number,
       weatherIcon: PropTypes.string,
     }),
   ).isRequired,
-  onItemSelected: PropTypes.func.isRequired,
 };
 
 export default WeekForecastItem;

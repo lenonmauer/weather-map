@@ -11,8 +11,10 @@ const WeekForecastList = ({ data, onItemSelected }) => (
   <View style={styles.container}>
     <FlatList
       data={data}
-      keyExtractor={(item, index) => String(index)}
-      renderItem={({ item }) => <WeekForecastItem data={item} onItemSelected={onItemSelected} />}
+      keyExtractor={item => item.dayOfWeek}
+      renderItem={({ item, index }) => (
+        <WeekForecastItem {...item} onItemSelected={() => onItemSelected(index)} />
+      )}
     />
   </View>
 );
@@ -20,13 +22,9 @@ const WeekForecastList = ({ data, onItemSelected }) => (
 WeekForecastList.propTypes = {
   onItemSelected: PropTypes.func.isRequired,
   data: PropTypes.arrayOf(
-    PropTypes.arrayOf(
-      PropTypes.shape({
-        dayOfWeek: PropTypes.string,
-        weatherIcon: PropTypes.string,
-        temp: PropTypes.number,
-      }),
-    ),
+    PropTypes.shape({
+      dayOfWeek: PropTypes.string,
+    }),
   ).isRequired,
 };
 

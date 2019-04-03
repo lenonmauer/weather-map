@@ -5,20 +5,18 @@ import { View, Text, Image } from 'react-native';
 import { weatherIcons } from '~/config/utils';
 import styles from './styles';
 
-const CurrentForecastItem = ({ data }) => (
+const CurrentForecastItem = ({ time, temp, weatherIcon }) => (
   <View style={styles.container}>
-    <Text style={styles.time}>{data.time}</Text>
-    <Image style={styles.icon} source={weatherIcons[data.weatherIcon]} />
-    <Text style={styles.temp}>{`${data.temp}°C`}</Text>
+    <Text style={styles.time}>{time}</Text>
+    <Image style={styles.icon} source={weatherIcons[weatherIcon]} />
+    <Text style={styles.temp}>{`${temp}°C`}</Text>
   </View>
 );
 
 CurrentForecastItem.propTypes = {
-  data: PropTypes.shape({
-    time: PropTypes.string.isRequired,
-    weatherIcon: PropTypes.string.isRequired,
-    temp: PropTypes.number.isRequired,
-  }).isRequired,
+  time: PropTypes.string.isRequired,
+  weatherIcon: PropTypes.string.isRequired,
+  temp: PropTypes.number.isRequired,
 };
 
 export default CurrentForecastItem;
